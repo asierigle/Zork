@@ -3,11 +3,21 @@
 #include <iostream>
 #include <string>
 using namespace std;
-/*struct Map{
+struct Map{
+	char* intro = "WELCOME TO MY AWESOME ZORK, MY LITTLE FRIENDS!!\n";
 
-};*/
-
+};
 struct Room
+{
+
+	char* name = "You are at the ";
+	char* description = "You are at the beautiful street\n";
+	char* north = NULL;
+	char* east = NULL;
+	char* south = NULL;
+	char* west = NULL;
+};
+struct Kitchen
 {
 	char* intro = "WELCOME TO MY AWESOME ZORK, MY LITTLE FRIENDS!!\n";
 	char* name = "You are at the ";
@@ -21,10 +31,10 @@ struct Room
 
 };
 
-
 int main(int argc, char* argv){
 	bool end = false;
-	Room kitchen;
+	Map town;
+	Kitchen kitchen;
 	Room street;
 	int x = 2, y = 2;
 	int i = 0;
@@ -36,7 +46,7 @@ int main(int argc, char* argv){
 	"Street", "Street", "Street", "Street", "Street",
 	"Street", "Street", "Street", "Street", "Street"
 	};
-	cout << kitchen.intro;
+	cout << town.intro;
 	cout << kitchen.name << map[x][y] << endl;
 	cout << kitchen.description;
 	cout << "What are you going to do next?\n";
@@ -58,8 +68,12 @@ int main(int argc, char* argv){
 		else if (order == "info"){
 			cout << kitchen.name << map[x][y] << endl << kitchen.description;
 		}
-		else if (order == "go north"){
+		else if (order == "go north" && x >= 0){
 			--x;
+			cout << street.name << map[x][y] << endl;
+		}
+		else if (order == "go south"){
+			++x;
 			cout << street.name << map[x][y] << endl;
 		}
 		else if (order == "why?"){
