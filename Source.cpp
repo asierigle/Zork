@@ -31,6 +31,7 @@ struct Kitchen
 
 };
 
+
 int main(int argc, char* argv){
 	bool end = false;
 	Map town;
