@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 class Room
 {
@@ -23,6 +24,24 @@ class Kitchen : public Room
 public:
 =======
 struct Map{
+=======
+struct Map{
+	char* intro = "WELCOME TO MY AWESOME ZORK, MY LITTLE FRIENDS!!\n";
+
+};
+struct Room
+{
+
+	char* name = "You are at the ";
+	char* description = "You are at the beautiful street\n";
+	char* north = NULL;
+	char* east = NULL;
+	char* south = NULL;
+	char* west = NULL;
+};
+struct Kitchen
+{
+>>>>>>> origin/master
 	char* intro = "WELCOME TO MY AWESOME ZORK, MY LITTLE FRIENDS!!\n";
 
 };
@@ -61,6 +80,10 @@ private:
 int main(int argc, char* argv){
 	bool end = false;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	Map town;
+>>>>>>> origin/master
 =======
 	Map town;
 >>>>>>> origin/master
@@ -111,6 +134,7 @@ int main(int argc, char* argv){
 			kitchen.Exits();
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		else if (order == "go north" && x > 0){
 			--x;
 			cout << street.name << map[x][y] << endl;
@@ -132,10 +156,19 @@ int main(int argc, char* argv){
 			--x;
 			cout << street.name << map[x][y] << endl;
 		}
+=======
+		else if (order == "go north" && x >= 0){
+			--x;
+			cout << street.name << map[x][y] << endl;
+		}
+>>>>>>> origin/master
 		else if (order == "go south"){
 			++x;
 			cout << street.name << map[x][y] << endl;
 		}
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 		else if (order == "why?"){
 			cout << "Because I said so!\n";
