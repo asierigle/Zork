@@ -1,0 +1,16 @@
+#include "Globals.h"
+#include "Room.h"
+#define __OBJECTS_H__
+#ifndef __OBJECTS_H__
+
+class Objects{
+public:
+	char* name;
+	char* description;
+	char* pick;
+
+
+private:
+
+};
+#endif
