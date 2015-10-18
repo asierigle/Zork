@@ -10,11 +10,6 @@ public:
 	char* description;
 	Objects obj1;
 	Objects obj2;
-
-	/*bool Exits(){
-		cout << north << east << west << south;
-		return true;
-	}*/
 private:
 
 };

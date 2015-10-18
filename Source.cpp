@@ -20,12 +20,13 @@ void Init(){
 
 	map[2][2].name = "You are at the Awesomekitchen";
 	map[2][1].name = "You are at the front door";
-	map[2][2].description = "You are trapped inside this beautiful red room in which you only can see a lighter...\n";
+	map[2][2].description = "You are trapped inside this beautiful red room in which you only can see a lantern...\n";
+	map[2][1].description = "There is a scary forest over there...\n";
 	map[2][2].obj1.name = "Lighter\n";
-	map[2][2].obj1.description = "Has low battery\n";
-	map[2][2].obj1.pick = "Good you have the lighter!\n";
 	map[2][2].obj2.name = "Window\n";
+	map[2][2].obj1.description = "Has low battery\n";
 	map[2][2].obj2.description = "You can see an enormous green field throught the window\n";
+	map[2][2].obj1.pick = "Good you have the lantern!\n";
 }
 
 
@@ -50,30 +51,29 @@ int main(int argc, char* argv){
 		string order;
 		getline(cin, order);
 
-		if (order == "pick the lighter" && i == 0 && x == 2 && y == 2){
+		if (order == "pick the lantern" && i == 0 && map [2][2].description){
 			cout << map[x][y].obj1.pick;
 			i++;
 		}
 		else if (order == "look window" && x == 2 && y == 2){
 			cout << map[x][y].obj2.description;
 		}
-		else if (order == "info" && x == 2 && y == 2){
+		else if (order == "info"){
 			cout << map[x][y].name << endl << map[x][y].description;
-			//map[x][y].Exits();
 		}
-		else if (order == "go north" && x > 0){
+		else if (order == "go north" || order == "north" && x > 0){
 			--y;
 			cout << map[x][y].name << endl;
 		}
-		else if (order == "go south" && x < 4){
+		else if (order == "go south" || order == "south" && x < 4){
 			++y;
 			cout << map[x][y].name << endl;
 		}
-		else if (order == "go east" && x != 2 && y < 4){
+		else if (order == "go east" || order == "east" && x != 2 && y < 4){
 			++x;
 			cout << map[x][y].name  << endl;
 		}
-		else if (order == "go west" && x != 2 && y > 0){
+		else if (order == "go west" || order == "west" && x != 2 && y > 0){
 			--x;
 			cout << map[x][y].name  << endl;
 		}
