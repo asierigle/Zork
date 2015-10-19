@@ -6,8 +6,9 @@
 
 class Room{
 public:
-	char* name = "You are at the ";
+	char* name;
 	char* description;
+	char* exits;
 	Objects obj1;
 	Objects obj2;
 private:

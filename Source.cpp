@@ -18,10 +18,12 @@ void Init(){
 	"Street17", "Street18", "Street19", "Street20", "Street21"
 	};*/
 
-	map[2][2].name = "You are at the Awesomekitchen";
-	map[2][1].name = "You are at the front door";
+	map[2][2].name = "You are at the Awesomekitchen\n";
+	map[2][1].name = "You are at the front door\n";
+	map[2][0].name = "You are at the Scary Forest! you shouldn't stay here a lot of time...\n";
 	map[2][2].description = "You are trapped inside this beautiful red room in which you only can see a lantern...\n";
 	map[2][1].description = "There is a scary forest over there...\n";
+	map[2][2].exits = "There's a door at the north.\n There are walls at the east and west.\n There's a window at the south.\n";
 	map[2][2].obj1.name = "Lighter\n";
 	map[2][2].obj2.name = "Window\n";
 	map[2][2].obj1.description = "Has low battery\n";
@@ -59,23 +61,23 @@ int main(int argc, char* argv){
 			cout << map[x][y].obj2.description;
 		}
 		else if (order == "info"){
-			cout << map[x][y].name << endl << map[x][y].description;
+			cout << map[x][y].name << map[x][y].description << map[x][y].exits;
 		}
 		else if (order == "go north" || order == "north" && x > 0){
 			--y;
-			cout << map[x][y].name << endl;
+			cout << map[x][y].name;
 		}
 		else if (order == "go south" || order == "south" && x < 4){
 			++y;
-			cout << map[x][y].name << endl;
+			cout << map[x][y].name;
 		}
 		else if (order == "go east" || order == "east" && x != 2 && y < 4){
 			++x;
-			cout << map[x][y].name  << endl;
+			cout << map[x][y].name;
 		}
 		else if (order == "go west" || order == "west" && x != 2 && y > 0){
 			--x;
-			cout << map[x][y].name  << endl;
+			cout << map[x][y].name;
 		}
 		else if (order == "why?"){
 			cout << "Because I said so!\n";
