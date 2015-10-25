@@ -2,6 +2,7 @@
 #include <string>
 #include "Objects.h"
 #include "Room.h"
+#include "Player.h"
 using namespace std;
 Room map[5][5];
 int x, y;
@@ -17,7 +18,6 @@ void Init(){
 	"Street12", "Street13", "Street14", "Street15", "Street16",
 	"Street17", "Street18", "Street19", "Street20", "Street21"
 	};*/
-
 	map[2][2].name = "You are at the Awesomekitchen\n";
 	map[2][1].name = "You are at the front door\n";
 	map[2][0].name = "You are at the Scary Forest! you shouldn't stay here a lot of time...\n";
@@ -29,15 +29,17 @@ void Init(){
 	map[2][2].obj1.description = "Has low battery\n";
 	map[2][2].obj2.description = "You can see an enormous green field throught the window\n";
 	map[2][2].obj1.pick = "Good you have the lantern!\n";
+	map[2][2].obj1.drop = "You drop that poor lantern\n";
+	
 }
 
 
 int main(int argc, char* argv){
 
 	bool end = false;
-	int i = 0;
 	x = y = 2;
-	
+	Player player(50, 0);
+	player.obj1.name = "You have no objects\n";
 
 	Init();
 	char* intro = "WELCOME TO MY AWESOME ZORK, MY LITTLE FRIENDS!!\n";
@@ -53,9 +55,25 @@ int main(int argc, char* argv){
 		string order;
 		getline(cin, order);
 
-		if (order == "pick the lantern" && i == 0 && map [2][2].description){
+		if (order == "pick" && map[x][y].obj1.name != NULL){
 			cout << map[x][y].obj1.pick;
-			i++;
+			player.obj1.name = map[x][y].obj1.name;
+			player.obj1.description = map[x][y].obj1.description;
+			player.obj1.pick = map[x][y].obj1.pick;
+			player.obj1.drop = map[x][y].obj1.drop;
+			map[x][y].obj1.name = map[x][y].obj1.description = map[x][y].obj1.pick = map[x][y].obj1.drop = NULL;
+		}
+		else if (order == "drop" && player.obj1.name != NULL){
+			cout << player.obj1.drop;
+			map[x][y].obj1.name = player.obj1.name;
+			map[x][y].obj1.description = player.obj1.description;
+			map[x][y].obj1.pick = player.obj1.pick;
+			map[x][y].obj1.drop = player.obj1.drop;
+			player.obj1.name = "You have no objects\n";
+			player.obj1.description = player.obj1.pick = player.obj1.drop = NULL;
+		}
+		else if (order == "inventory"){
+			cout << player.obj1.name;
 		}
 		else if (order == "look window" && x == 2 && y == 2){
 			cout << map[x][y].obj2.description;

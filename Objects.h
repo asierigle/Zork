@@ -10,6 +10,7 @@ public:
 	char* name;
 	char* description;
 	char* pick;
+	char* drop;
 
 };
 #endif
